@@ -27,29 +27,34 @@ int Map::trunOf(int x, int y){
 
 void Map::setMine(int x, int y){
     int i = mines;
-    while (i--)
+    while (i)
     {
-
+        int nx=rand()%width;
+        int ny=rand()%height;
+        if(!map[nx][ny]->getIfMine()){
+            i--;
+            map[nx][ny]->setMine();
+        }
     }
     
 }
 
 void Map::Show(){
-    
-}
-
-void Map::showAll(){
     for (auto i:map){
         for (auto j:i){
             if(j->getIfMine()){
                 std::cout<<'*';
             }
             else{
-                std::cout<<j->getAround();
+                std::cout<<"O";//j->getAround();
             }
         }
         std::cout<<std::endl;
     }
+}
+
+void Map::showAll(){
+    
 }
 
 bool Map::ifWin(){

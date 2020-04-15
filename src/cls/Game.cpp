@@ -69,29 +69,31 @@ void Game::start(){
         clear();
         erea.Show();
         std::cin>>x>>y;
-        switch(erea.trunOf(x,y)){
-            case 1: break;
-
-            case 2: std::cout<<"无效值!请重新输入"<<std::endl;
-                    break;
-
-            case 3: ifLose = true;
-                    break;
-        }
-        clear();
         erea.showAll();
-        if(ifLose){
-            std::cout<<"  Y     Y  OOOOO   U     U    L        OOOOO    SSSSS  EEEEEEE "<<std::endl;
-            std::cout<<"   Y   Y  O     O  U     U    L       O     O  S     S E       "<<std::endl;
-            std::cout<<"    Y Y  O       O U     U    L      O       O  SSS    E______ "<<std::endl;
-            std::cout<<"     Y   O       O U     U    L      O       O    SSS  E^^^^^^ "<<std::endl;
-            std::cout<<"     Y    O     O  U     U    L       O     O  S     S E       "<<std::endl;
-            std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
-        }
-        else {
-            std::cout<<"you win!"<<std::endl;
-        }
-        std::cout<<"按任意键以继续"<<std::endl;
+        // switch(erea.trunOf(x,y)){
+        //     case 1: break;
+
+        //     case 2: std::cout<<"无效值!请重新输入"<<std::endl;
+        //             break;
+
+        //     case 3: ifLose = true;
+        //             break;
+        // }
+        // clear();
+        // erea.showAll();
+        // if(ifLose){
+        //     std::cout<<"  Y     Y  OOOOO   U     U    L        OOOOO    SSSSS  EEEEEEE "<<std::endl;
+        //     std::cout<<"   Y   Y  O     O  U     U    L       O     O  S     S E       "<<std::endl;
+        //     std::cout<<"    Y Y  O       O U     U    L      O       O  SSS    E______ "<<std::endl;
+        //     std::cout<<"     Y   O       O U     U    L      O       O    SSS  E^^^^^^ "<<std::endl;
+        //     std::cout<<"     Y    O     O  U     U    L       O     O  S     S E       "<<std::endl;
+        //     std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
+        // }
+        // else {
+        //     std::cout<<"you win!"<<std::endl;
+        // }
+        // std::cout<<"按任意键以继续"<<std::endl;
+        // std::cin.get();
     }
 }
 
