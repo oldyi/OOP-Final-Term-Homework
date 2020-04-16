@@ -26,6 +26,7 @@ void Game::showGUI(){
 bool Game::getSystemInfo(){
     if(system("cls")==1){
         System=0;
+        system("chcp 65001");
     }
     else{
         System=1;
