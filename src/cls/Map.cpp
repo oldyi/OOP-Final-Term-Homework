@@ -4,6 +4,7 @@
 #include "./head/Map.h"
 #include "Block.cpp"
 #include <iostream>
+#include <cstdio>
 
 Map::Map(int height, int width, int mines)
 {
@@ -64,44 +65,60 @@ void Map::setMine(int x, int y){
 }
 
 void Map::Show(){
-    std::cout<<"Q|";
-    for(int j=0;j<width;j++)std::cout<<j<<" ";
-    std::cout<<std::endl;
-    for(int j=0;j<=width;j++)std::cout<<"_|";
+    for(int j=0;j<=width;j++)std::cout<<"_"<<"_"<<"__";
+    std::cout<<std::endl<<" Q |";
+    for(int j=0;j<width;j++)printf("%2d",j),std::cout<<" |";
     std::cout<<std::endl;
     int ii=0;
     for (auto i:map){
-        std::cout<<ii<<"|";
+        for(int j=0;j<=width;j++)std::cout<<"---|";
+        std::cout<<std::endl;
+        printf("%2d",ii);
+        std::cout<<" |";
         ii++;
         for (auto j:i){
             if(j.getIfShow()) {
                 if(j.getIfMine()){
-                    std::cout<<'*'<<"|";
+                    std::cout<<' '<<'*'<<" |";
                 }
                 else{
-                    std::cout<<(j.getAround()==0?' ':char(j.getAround()+48))<<"|";
+                    std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";
                 }
             }
             else{
-                std::cout<<'#'<<"|";
+                std::cout<<' '<<'#'<<" |";
             }
         }
         std::cout<<std::endl;
     }
+    for(int j=0;j<=width;j++)std::cout<<"---|";
+    std::cout<<std::endl<<"行 列"<<std::endl;
 }
 
 void Map::showAll(){
+    for(int j=0;j<=width;j++)std::cout<<"_"<<"_"<<"__";
+    std::cout<<std::endl<<" Q |";
+    for(int j=0;j<width;j++)printf("%2d",j),std::cout<<" |";
+    std::cout<<std::endl;
+    int ii=0;
     for (auto i:map){
+        for(int j=0;j<=width;j++)std::cout<<"---|";
+        std::cout<<std::endl;
+        printf("%2d",ii);
+        std::cout<<" |";
+        ii++;
         for (auto j:i){
             if(j.getIfMine()){
-                std::cout<<'*'<<"|";
+                std::cout<<' '<<'*'<<" |";
             }
             else{
-                std::cout<<(j.getAround()==0?' ':char(j.getAround()+48))<<"|";
+                std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";
             }
         }
         std::cout<<std::endl;
     }
+    for(int j=0;j<=width;j++)std::cout<<"---|";
+    std::cout<<std::endl;
 }
 
 bool Map::ifWin(){
