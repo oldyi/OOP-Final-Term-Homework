@@ -79,14 +79,14 @@ void Map::Show(){
         for (auto j:i){
             if(j.getIfShow()) {
                 if(j.getIfMine()){
-                    std::cout<<' '<<'*'<<" |";
+                    std::cout<<' '<<"💣"<<" |";
                 }
                 else{
                     std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";
                 }
             }
             else{
-                std::cout<<' '<<'#'<<" |";
+                std::cout<<' '<<"□"<<" |";
             }
         }
         std::cout<<std::endl;
@@ -109,7 +109,7 @@ void Map::showAll(){
         ii++;
         for (auto j:i){
             if(j.getIfMine()){
-                std::cout<<' '<<'*'<<" |";
+                std::cout<<' '<<"💣"<<"|";
             }
             else{
                 std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";

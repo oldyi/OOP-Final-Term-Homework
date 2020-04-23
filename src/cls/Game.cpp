@@ -12,14 +12,14 @@ void Game::clear(){
 }
 
 void Game::showGUI(){
-    std::cout<<"----------------------------------"<<std::endl;
-    std::cout<<"|               扫雷             |"<<std::endl;
-    std::cout<<"|                                |"<<std::endl;
-    std::cout<<"|                                |"<<std::endl;
-    std::cout<<"|   1:开始游戏         2:退出    |"<<std::endl;
-    std::cout<<"|                                |"<<std::endl;
-    std::cout<<"|                                |"<<std::endl;
-    std::cout<<"----------------------------------"<<std::endl;
+    std::cout<<"----------------------------------"<<std::endl
+             <<"|               扫雷             |"<<std::endl
+             <<"|                                |"<<std::endl
+             <<"|                                |"<<std::endl
+             <<"|   1:开始游戏         2:退出    |"<<std::endl
+             <<"|                                |"<<std::endl
+             <<"|                                |"<<std::endl
+             <<"----------------------------------"<<std::endl;
 }
 
 
@@ -91,11 +91,11 @@ void Game::start(){
         if(ifLose){
             clear();
             erea.showAll();
-            std::cout<<"  Y     Y  OOOOO   U     U    L        OOOOO    SSSSS  EEEEEEE "<<std::endl;
-            std::cout<<"   Y   Y  O     O  U     U    L       O     O  S     S E       "<<std::endl;
-            std::cout<<"    Y Y  O       O U     U    L      O       O  SSS    E______ "<<std::endl;
-            std::cout<<"     Y   O       O U     U    L      O       O    SSS  E^^^^^^ "<<std::endl;
-            std::cout<<"     Y    O     O  U     U    L       O     O  S     S E       "<<std::endl;
+            std::cout<<"  Y     Y  oOOOo   U     U    L        oOOOo    sSSSs  EEEEEEE "<<std::endl;
+            std::cout<<"   Y   Y  O     O  U     U    L       O     O  S       E       "<<std::endl;
+            std::cout<<"    Y Y  O       O U     U    L      O       O  SSs    E______ "<<std::endl;
+            std::cout<<"     Y   O       O U     U    L      O       O    SSs  E^^^^^^ "<<std::endl;
+            std::cout<<"     Y    O     O  U     U    L       O     O  s     S E       "<<std::endl;
             std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
             std::cin.get();
             std::cout<<"按任意键以继续"<<std::endl;
