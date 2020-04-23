@@ -23,7 +23,7 @@ void Game::showGUI(){
 }
 
 
-bool Game::getSystemInfo(){
+void Game::getSystemInfo(){
     if(system("cls")==1){
         System=0;
         system("chcp 65001");
@@ -43,14 +43,19 @@ void Game::play(){
     std::cin>>opt;
     while (opt!=2){
         clear();
-        showGUI();
-        std::cout<<"请输入有效的操作:"<<std::endl;
-        std::cin>>opt;
+        if(opt!=1) {
+            showGUI();
+            std::cout<<"请输入有效的操作:"<<std::endl;
+            std::cin>>opt;
+        }
         if(opt!=1){
             continue;
         }
         else{
             start();
+            clear();
+            showGUI();
+            std::cin>>opt;
         }
     }
     std::cout<<"感谢游玩，按任意键退出"<<std::endl;
@@ -66,35 +71,45 @@ void Game::start(){
     bool ifLose = false;
     std::cin>>x>>y;
     erea.setMine(x, y);
+    erea.trunOf(x,y);
     while(!erea.ifWin()){
         clear();
         erea.Show();
         std::cin>>x>>y;
-        erea.showAll();
-        // switch(erea.trunOf(x,y)){
-        //     case 1: break;
+        switch(erea.trunOf(x,y)){
+            case 1: break;
 
-        //     case 2: std::cout<<"无效值!请重新输入"<<std::endl;
-        //             break;
+            case 3: std::cout<<"无效值!请重新输入"<<std::endl;
+                    break;
 
-        //     case 3: ifLose = true;
-        //             break;
-        // }
-        // clear();
-        // erea.showAll();
-        // if(ifLose){
-        //     std::cout<<"  Y     Y  OOOOO   U     U    L        OOOOO    SSSSS  EEEEEEE "<<std::endl;
-        //     std::cout<<"   Y   Y  O     O  U     U    L       O     O  S     S E       "<<std::endl;
-        //     std::cout<<"    Y Y  O       O U     U    L      O       O  SSS    E______ "<<std::endl;
-        //     std::cout<<"     Y   O       O U     U    L      O       O    SSS  E^^^^^^ "<<std::endl;
-        //     std::cout<<"     Y    O     O  U     U    L       O     O  S     S E       "<<std::endl;
-        //     std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
-        // }
-        // else {
-        //     std::cout<<"you win!"<<std::endl;
-        // }
-        // std::cout<<"按任意键以继续"<<std::endl;
-        // std::cin.get();
+            case 2: ifLose = true;
+                    break;
+        }
+        clear();
+        erea.Show();
+        if(ifLose){
+            clear();
+            erea.showAll();
+            std::cout<<"  Y     Y  OOOOO   U     U    L        OOOOO    SSSSS  EEEEEEE "<<std::endl;
+            std::cout<<"   Y   Y  O     O  U     U    L       O     O  S     S E       "<<std::endl;
+            std::cout<<"    Y Y  O       O U     U    L      O       O  SSS    E______ "<<std::endl;
+            std::cout<<"     Y   O       O U     U    L      O       O    SSS  E^^^^^^ "<<std::endl;
+            std::cout<<"     Y    O     O  U     U    L       O     O  S     S E       "<<std::endl;
+            std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
+            std::cin.get();
+            std::cout<<"按任意键以继续"<<std::endl;
+            std::cin.get();
+            break;
+        }
+        else if(erea.ifWin()) {
+            clear();
+            erea.showAll();
+            std::cout<<"you win!"<<std::endl;
+            std::cin.get();
+            std::cout<<"按任意键以继续"<<std::endl;
+            std::cin.get();
+        }
+        
     }
 }
 

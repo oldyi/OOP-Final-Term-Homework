@@ -14,7 +14,7 @@ public:
     void start();//开始新的一局(内部)
     void showGUI();//显示开始界面
     void play();//开始游戏(总体)
-    bool getSystemInfo();//判断系统类型(Windows/linux)
+    void getSystemInfo();//判断系统类型(Windows/linux)
     void clear();//清屏
 };
 

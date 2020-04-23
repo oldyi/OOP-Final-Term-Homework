@@ -6,7 +6,7 @@
 Block::Block(){ //开始时默认无雷
     ifMine = false;
     ifShow = false;
-    state = '0';
+    around = 0;
 }
 
 bool Block::getIfMine()const{
@@ -14,18 +14,21 @@ bool Block::getIfMine()const{
 }
 
 bool Block::getIfShow()const{
-    return ifShow;
+    return (ifShow);
 }
 
-bool Block::setMine(){
+void Block::setMine(){
     this->ifMine = true;
-    state = '*';
 }
 
-bool Block::setIfShow(){
+void Block::setIfShow(){
     this->ifShow = true;
 }
 
 int Block::getAround()const{
     return around;
+}
+
+void Block::setAround(int ar){
+    around = ar;
 }
