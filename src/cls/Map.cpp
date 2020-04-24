@@ -5,6 +5,8 @@
 #include "Block.cpp"
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
+#include <ctime>
 
 Map::Map(int height, int width, int mines)
 {
@@ -46,11 +48,12 @@ void Map::setMine(int x, int y){
     int iii = mines;
     int tx[8] = {-1, 0, 1,-1, 1,-1, 0, 1};
     int ty[8] = { 1, 1, 1, 0, 0,-1,-1,-1};
+    srand((unsigned int)(time(NULL)));
     while (iii)
     {
         int nx=rand()%width;
         int ny=rand()%height;
-        if(!map[nx][ny].getIfMine()){
+        if(!map[nx][ny].getIfMine()&&!(nx==x&&ny==y)){
             iii--;
             map[nx][ny].setMine();
             for(int i=0;i<8;i++){
