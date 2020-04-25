@@ -8,7 +8,7 @@
 class Game
 {
 private:
-    bool System;//记录系统类型(Windows/linux)
+    static bool System;//记录系统类型(Windows/linux)
     const char * sys[2]={"cls","clear"};//针对不同系统的清屏命令
 public:
     void start();//开始新的一局(内部)
@@ -16,6 +16,7 @@ public:
     void play();//开始游戏(总体)
     void getSystemInfo();//判断系统类型(Windows/linux)
     void clear();//清屏
+    static bool GetSystem();
 };
-
+bool Game::System ;
 #endif

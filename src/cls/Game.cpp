@@ -6,9 +6,13 @@
 #include <iostream>
 #include "./head/Game.h"
 #include "./Map.cpp"
+#include "./Time.cpp"
 
 void Game::clear(){
     system(sys[System]);
+}
+bool Game::GetSystem(){
+    return System;
 }
 
 void Game::showGUI(){
@@ -27,7 +31,7 @@ void Game::getSystemInfo(){
     if(system("cls")==0){
         System=0;
         system("chcp 65001");
-        system("color c0");
+        system("color 70");
         system(sys[System]);
     }
     else{
@@ -67,12 +71,14 @@ void Game::play(){
 }
 
 void Game::start(){
+    Time t;
     Map erea;
-    erea.Show();
     std::cout<<"请选择一个位置以开始"<<std::endl;
+    erea.Show();
     int x,y;
     bool ifLose = false;
     std::cin>>x>>y;
+    t.TimeDifference(1,0);
     erea.setMine(x, y);
     erea.trunOf(x,y);
     while(!erea.ifWin()){
@@ -93,13 +99,14 @@ void Game::start(){
         if(ifLose){
             clear();
             erea.showAll();
-            std::cout<<"  Y     Y  oOOOo   U     U    L        oOOOo    sSSSs  EEEEEEE "<<std::endl;
-            std::cout<<"   Y   Y  O     O  U     U    L       O     O  S       E       "<<std::endl;
-            std::cout<<"    Y Y  O       O U     U    L      O       O  SSs    E______ "<<std::endl;
-            std::cout<<"     Y   O       O U     U    L      O       O    SSs  E^^^^^^ "<<std::endl;
-            std::cout<<"     Y    O     O  U     U    L       O     O  s     S E       "<<std::endl;
-            std::cout<<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
-            std::cin.get();
+            std::cout<<"  Y     Y  oOOOo   U     U    L        oOOOo    sSSSs  EEEEEEE "<<std::endl
+                     <<"   Y   Y  O     O  U     U    L       O     O  S       E       "<<std::endl
+                     <<"    Y Y  O       O U     U    L      O       O  SSs    E______ "<<std::endl
+                     <<"     Y   O       O U     U    L      O       O    SSs  E^^^^^^ "<<std::endl
+                     <<"     Y    O     O  U     U    L       O     O  s     S E       "<<std::endl
+                     <<"     Y     OOOOO    UUUUU     LLLLLLL  OOOOO    SSSSS  EEEEEEE "<<std::endl;
+            t.GetCurrentTime();
+            t.TimeDifference(0,1);
             std::cout<<"按任意键以继续"<<std::endl;
             std::cin.get();
             break;
@@ -108,6 +115,8 @@ void Game::start(){
             clear();
             erea.showAll();
             std::cout<<"you win!"<<std::endl;
+            t.GetCurrentTime();
+            t.TimeDifference(0,1);
             std::cin.get();
             std::cout<<"按任意键以继续"<<std::endl;
             std::cin.get();
