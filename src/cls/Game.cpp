@@ -11,9 +11,6 @@
 void Game::clear(){
     system(sys[System]);
 }
-bool Game::GetSystem(){
-    return System;
-}
 
 void Game::showGUI(){
     std::cout<<"----------------------------------"<<std::endl

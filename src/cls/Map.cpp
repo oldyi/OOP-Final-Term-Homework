@@ -7,8 +7,14 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
-#include "./head/Game.h"
+
+#ifndef GAME_CPP
+#define GAME_CPP
+#include "./cls/Game.cpp"
+#endif
+
 class Game;
+
 Map::Map(int height, int width, int mines)
 {
     this->height = height;
@@ -83,7 +89,7 @@ void Map::Show(){
         for (auto j:i){
             if(j.getIfShow()) {
                 if(j.getIfMine()){
-                    std::cout<<' '<<"💣"<<"|";
+                    std::cout<<' '<<"雷"<<"|";
                 }
                 else{
                     std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";
@@ -118,7 +124,7 @@ void Map::showAll(){
         ii++;
         for (auto j:i){
             if(j.getIfMine()){
-                std::cout<<' '<<"💣"<<"|";
+                std::cout<<' '<<"雷"<<"|";
             }
             else{
                 std::cout<<' '<<(j.getAround()==0?' ':char(j.getAround()+48))<<" |";

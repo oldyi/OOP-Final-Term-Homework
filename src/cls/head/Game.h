@@ -16,7 +16,9 @@ public:
     void play();//开始游戏(总体)
     void getSystemInfo();//判断系统类型(Windows/linux)
     void clear();//清屏
-    static bool GetSystem();
+    static bool GetSystem() {
+        return System;
+    }
 };
-bool Game::System ;
+bool Game::System = 0 ;
 #endif
