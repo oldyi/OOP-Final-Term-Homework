@@ -1,3 +1,6 @@
 .directory
 .vscode
 *.exe
+bin
+obj
+*.cbp
