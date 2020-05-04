@@ -27,5 +27,8 @@ public:
             std::cout << "本次扫雷用时:" << (isend - isstart) << "s" << std::endl;
             std::cin.get();
         }
+        int GetTimeDifference(){
+              return (int)(isend - isstart) ;
+        }
 };
 #endif
