@@ -89,20 +89,21 @@ public:
                 std::cin.get();
                 break;
             }
-            else if(1)/*(erea->ifWin())*/ {
+            else /*if(erea->ifWin())*/ {
                 clear();
                 erea->showAll();
                 std::cout<<"you win!"<<std::endl;
-                t.GetCurrentTime();
-                t.TimeDifference(0,1);
-                std::cout<<"是否要加入排行榜（1：是 ；其它：否）？\n 请选择："<<std::endl;
-                std::cin>>x;
-                if(x==1){
-                    int timeaa;
-                    timeaa=t.GetTimeDifference();
-                    add2Cata(rand()%100);
+                if(temp != 4) {
+                    t.GetCurrentTime();
+                    t.TimeDifference(0,1);
+                    std::cout<<"是否要加入排行榜（1：是 ；其它：否）？\n 请选择："<<std::endl;
+                    std::cin>>x;
+                    if(x==1){
+                        int timeaa;
+                        timeaa=t.GetTimeDifference();
+                        add2Cata(/*timeaa*/rand()%100 , temp);
+                    }
                 }
-
                 std::cin.get();
                 std::cout<<"按任意键以继续"<<std::endl;
                 std::cin.get();
@@ -203,7 +204,19 @@ public:
         return System;
     }
 
-    void add2Cata(int timeaaa){
+    void add2Cata(int timeaaa , int difficulty){
+        std::string filelistN[4] = {
+            "",
+            "./name1.sav",
+            "./name2.sav",
+            "./name3.sav"
+        };
+        std::string filelistT[4] = {
+            "",
+            "./time1.sav",
+            "./time2.sav",
+            "./time3.sav"
+        };
         std::cout<<"请输入姓名：\n";
         std::cin>>s.a;
         s.t=timeaaa;
@@ -217,17 +230,14 @@ public:
         std::ofstream outfilecj;
         std::string temp;
 
-        outfilecj.open("./cj.sav", std::ios::out | std::ios::in);
+        outfilecj.open(filelistT[difficulty], std::ios::out | std::ios::in);
         outfilecj.close();
-        outfilexm.open("./xm.sav", std::ios::out | std::ios::in);
+        outfilexm.open(filelistN[difficulty], std::ios::out | std::ios::in);
         outfilexm.close();
         
         std::cout<<"排名"<<"\t"<<"昵称"<<"   时间(s)"<<std::endl;
-        infilexm.open("./xm.sav", std::ios::in);
-        if (!infilexm.is_open())
-        {
-            std::cout << "未成功打开文件" << std::endl;
-        }
+        infilexm.open(filelistN[difficulty], std::ios::in);
+
         while(getline(infilexm,temp) && i<11)
         {
             aa[i].a=temp;
@@ -235,18 +245,25 @@ public:
         }
         infilexm.close();
 
-        infilecj.open("./cj.sav", std::ios::in);
+        infilecj.open(filelistT[difficulty], std::ios::in);
         while (infilecj >> aa[j].t && j<=i)
         {
             j++;
         }
         infilecj.close();
-
-        aa[i]=s;
-        aa[i].t=timeaaa;
+        i--;
+        if(i<10){
+            i++;
+            aa[i]=s;
+            aa[i].t=timeaaa;
+        }
+        else if(aa[i].t>timeaaa){
+            aa[i]=s;
+            aa[i].t=timeaaa;
+        }
+        
 
         if(i >= 1){
-            std::cout<<111111111<<std::endl;
             for(k=i;k>=1;k--){
                 for(j=0;j<k;j++){
                     if(aa[j].t>aa[j+1].t){
@@ -258,12 +275,9 @@ public:
             }
         }
 
-        outfilexm.open("./xm.sav", std::ios::out | std::ios::trunc);
-        outfilecj.open("./cj.sav", std::ios::out | std::ios::trunc);
-        if (!outfilexm.is_open())
-        {
-            std::cout << "未成功打开文件" << std::endl;
-        }
+        outfilexm.open(filelistN[difficulty], std::ios::out | std::ios::trunc);
+        outfilecj.open(filelistT[difficulty], std::ios::out | std::ios::trunc);
+
         for(k=0;k<=i;k++){
             std::cout<<k+1<<"\t"<<aa[k].a<<"\t"<<aa[k].t<<std::endl;
             outfilexm<<aa[k].a<<std::endl;
