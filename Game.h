@@ -89,7 +89,7 @@ public:
                 std::cin.get();
                 break;
             }
-            else /*if(erea->ifWin())*/ {
+            else if(erea->ifWin()) {
                 clear();
                 erea->showAll();
                 std::cout<<"you win!"<<std::endl;
