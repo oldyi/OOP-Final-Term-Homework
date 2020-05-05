@@ -101,7 +101,7 @@ public:
                     if(x==1){
                         int timeaa;
                         timeaa=t.GetTimeDifference();
-                        add2Cata(/*timeaa*/rand()%100 , temp);
+                        add2Cata(timeaa , temp);
                     }
                 }
                 std::cin.get();
