@@ -74,7 +74,7 @@ public:
                 }
                 else{
                     if(1){
-                        std::cout<<' '<<"□"<<" |";
+                        std::cout<<' '<<"□"<<"|";
                     }
                     else {
                         std::cout<<' '<<"□"<<"|";
